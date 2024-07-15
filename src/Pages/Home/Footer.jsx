@@ -35,11 +35,18 @@ const Icons = styled(ButtonGroup)(({ theme, ...props }) => ({
     color: theme.palette.primary.text,
     backgroundColor: theme.palette.primary.main,
     marginRight: "10px",
-    borderRadius: "0",
+    borderRadius: "6px",
+    transition: "all 0.3s ease",
+  },
+
+  "& button:hover": {
+    backgroundColor: theme.palette.primary.orange,
   },
 }));
 const Icon = styled(IconButton)(({ theme, ...props }) => ({}));
 const link = styled("div")(({ theme, ...props }) => ({}));
+
+const onclick = "https://www.google.com/";
 
 // const Copyright;
 
@@ -53,7 +60,7 @@ export default function Footer() {
           reiciendis, nostrum harum repudiandae consequatur!
         </Text>
         <Icons>
-          <Icon>
+          <Icon LinkComponent={"a"} href={"https://www.google.com/"}>
             <FacebookIcon />
           </Icon>
           <Icon>
