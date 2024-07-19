@@ -52,17 +52,18 @@ const SubHeading = styled(Typography)(({ theme, ...props }) => ({
 
 const CTAbtn = styled(Button)(({ theme, ...props }) => ({
   font: "700 20px Raleway",
-  padding: "15px",
+  padding: "14px",
   margin: "15px 0",
   // borderRadius: "25px",
   backgroundColor: theme.palette.primary.orange,
   color: theme.palette.primary.text,
   letterSpacing: "3px",
+  border: `3px solid ${theme.palette.primary.orange}`,
+  transition: "all 0.3s ease",
 
   "&: hover": {
     backgroundColor: theme.palette.primary.darkOrange,
-    color: theme.palette.primary.text,
-    transition: "all 0.4s ease",
+    border: `3px solid ${theme.palette.primary.orange}`,
   },
 }));
 export {
