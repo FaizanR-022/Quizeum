@@ -15,13 +15,4 @@ const SectionWrapper = styled("div")(() => ({
   textAlign: "center",
 }));
 
-const Container = styled("div")(() => ({
-  display: "flex",
-  padding: "130px 0 0 0",
-  // grid: "",
-  gap: "50px",
-  flexWrap: "wrap",
-  justifyContent: "center",
-}));
-
-export { SectionWrapper, BgImage, Container };
+export { SectionWrapper, BgImage };

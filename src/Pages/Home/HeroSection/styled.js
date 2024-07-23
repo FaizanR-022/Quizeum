@@ -24,8 +24,6 @@ const HeroBox = styled("div")(({ theme, ...props }) => ({
   height: "85%",
   width: "80%",
   borderRadius: "15px",
-  // backgroundColor: "rgba(4, 57, 39, 0.7)",
-  // backgroundColor: "rgba(47, 72, 88, 0.6)",
   backgroundColor: theme.palette.primary.HeroBg,
   padding: "0 40px",
   display: "flex",

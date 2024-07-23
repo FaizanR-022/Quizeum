@@ -8,12 +8,12 @@ import Testimonials from "./Testimonials/Testimonials";
 export default function Home() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <HeroSection />
       <Features />
       <Programs />
       <Testimonials />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

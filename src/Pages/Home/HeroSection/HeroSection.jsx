@@ -9,7 +9,7 @@ import {
   CTAbtn,
 } from "./styled";
 
-import { MainHeading } from "../../../Global/styled";
+import { MainHeading, Overlay } from "../../../Global/styled";
 
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import HeroImg from "../../../assets/heroimg3.png";
@@ -17,7 +17,13 @@ import HeroImg from "../../../assets/heroimg3.png";
 export default function HeroSection() {
   return (
     <SectionWrapper>
-      <BgImage>
+      <Overlay
+        sx={{
+          height: "750px",
+          pt: "80px",
+          pb: "100px",
+        }}
+      >
         <HeroBox>
           <TextSection>
             <MainHeading sx={{ paddingBottom: "30px" }}>
@@ -35,7 +41,7 @@ export default function HeroSection() {
             <Image src={HeroImg}></Image>
           </ImageSection>
         </HeroBox>
-      </BgImage>
+      </Overlay>
     </SectionWrapper>
   );
 }

@@ -1,47 +1,87 @@
 import { styled, Typography } from "@mui/material";
-import icon from "../assets/book-solid.svg";
+import { Link } from "react-router-dom";
 
 const Heading = styled(Typography)(({ theme, ...props }) => ({
   color: theme.palette.primary.orange,
-  font: "700 60px Raleway",
   paddingBottom: "10px",
+  ...(props.homePage
+    ? {
+        font: "700 60px Raleway",
+      }
+    : {
+        font: "700 50px Raleway",
+      }),
 }));
 
 const Box = styled("div")(({ theme, ...props }) => ({
   backgroundColor: theme.palette.primary.bgBlue,
-  width: "40%",
   textAlign: "left",
-  height: "160px",
-  borderRadius: "10px",
-  padding: "20px 15px 12px 20px",
-  border: `2px solid ${theme.palette.primary.darkOrange}`,
-  boxShadow: `${theme.palette.primary.darkOrange} 0px -50px 36px -28px 
-  inset`,
-  transition: "all 0.5s ease",
+  transition: "all 0.2s ease",
 
-  "&: hover": {
-    cursor: "pointer",
-    height: "190px",
-    width: "41%",
+  ...(props.homePage
+    ? {
+        border: `2px solid ${theme.palette.primary.darkOrange}`,
+        borderRadius: "10px",
+        width: "40%",
+        height: "160px",
+        padding: "20px 15px 12px 20px",
+        boxShadow: `${theme.palette.primary.darkOrange} 0px -50px 36px -28px 
+    inset`,
+        "&: hover": {
+          border: `3px solid ${theme.palette.primary.orange}`,
+        },
+      }
+    : {
+        border: `2px solid ${theme.palette.primary.orange}`,
+        borderRadius: "7px",
+        width: "35%",
+        height: "150px",
+        padding: "16px 12px 8px 16px",
+        boxShadow: `${theme.palette.primary.orange} 0px -46px 32px -32px 
+      inset`,
+        "&: hover": {
+          border: `3px solid ${theme.palette.primary.text}`,
+        },
+      }),
+
+  // ...(props.hover
+  //   ? {
+  //       transition: "all 0.2s ease",
+  //       "&: hover": {
+  //         border: `4px solid ${theme.palette.primary.orange}`,
+  //       },
+  //     }
+  //   : {
+  //       transition: "all 0.2s ease",
+  //       "&: hover": {
+  //         border: `3px solid ${theme.palette.primary.orange}`,
+  //       },
+  //     }),
+
+  "& a": {
+    textDecoration: "none",
   },
-
-  // "& a": {
-  //   textDecoration: "none",
-  // },
 }));
 
 const Content = styled(Typography)(({ theme, ...props }) => ({
   color: theme.palette.primary.text,
   font: "400 22px Poppins",
+  ...(props.homePage
+    ? {
+        font: "400 22px Poppins",
+      }
+    : {
+        font: "400 18px Poppins",
+      }),
 }));
 
-const ProgramsBox = ({ Title, Text, ...props }) => {
+const ProgramsBox = ({ Title, Text, homePage = true, ...props }) => {
   return (
-    <Box>
-      {/* <a href="www.google.com"> */}
-      <Heading>{Title}</Heading>
-      <Content>{Text}</Content>
-      {/* </a> */}
+    <Box homePage={homePage}>
+      <Link>
+        <Heading>{Title}</Heading>
+        <Content>{Text}</Content>
+      </Link>
     </Box>
   );
 };

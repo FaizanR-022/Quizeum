@@ -9,9 +9,7 @@ import { Route } from "./Routes/Route";
 function App() {
   return (
     <>
-      <Header />
       <RouterProvider router={Route} />
-      <Footer />
     </>
   );
 }
