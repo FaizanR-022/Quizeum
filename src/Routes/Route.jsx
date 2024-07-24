@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home/Home";
-import ChooseProgram from "../Pages/Quiz/ChooseProgram";
+import ChooseProgram from "../Pages/Quiz/ChooseProgram/ChooseProgram";
 
 export const Route = createBrowserRouter([
   {

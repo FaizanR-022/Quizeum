@@ -1,4 +1,4 @@
-import { styled, Typography } from "@mui/material";
+import { Button, styled, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Heading = styled(Typography)(({ theme, ...props }) => ({
@@ -44,20 +44,6 @@ const Box = styled("div")(({ theme, ...props }) => ({
         },
       }),
 
-  // ...(props.hover
-  //   ? {
-  //       transition: "all 0.2s ease",
-  //       "&: hover": {
-  //         border: `4px solid ${theme.palette.primary.orange}`,
-  //       },
-  //     }
-  //   : {
-  //       transition: "all 0.2s ease",
-  //       "&: hover": {
-  //         border: `3px solid ${theme.palette.primary.orange}`,
-  //       },
-  //     }),
-
   "& a": {
     textDecoration: "none",
   },
@@ -77,7 +63,7 @@ const Content = styled(Typography)(({ theme, ...props }) => ({
 
 const ProgramsBox = ({ Title, Text, homePage = true, ...props }) => {
   return (
-    <Box homePage={homePage}>
+    <Box homePage={homePage} sx={props.sx} onClick={props.onClick}>
       <Link>
         <Heading>{Title}</Heading>
         <Content>{Text}</Content>
