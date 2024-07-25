@@ -17,6 +17,7 @@ const Box = styled("div")(({ theme, ...props }) => ({
   backgroundColor: theme.palette.primary.bgBlue,
   textAlign: "left",
   transition: "all 0.2s ease",
+  cursor: "pointer",
 
   ...(props.homePage
     ? {
@@ -34,10 +35,10 @@ const Box = styled("div")(({ theme, ...props }) => ({
     : {
         border: `2px solid ${theme.palette.primary.orange}`,
         borderRadius: "7px",
-        width: "35%",
-        height: "150px",
-        padding: "16px 12px 8px 16px",
-        boxShadow: `${theme.palette.primary.orange} 0px -46px 32px -32px 
+        width: "32%",
+        height: "130px",
+        padding: "15px 11px 7px 15px",
+        boxShadow: `${theme.palette.primary.orange} 0px -46px 30px -34px 
       inset`,
         "&: hover": {
           border: `3px solid ${theme.palette.primary.text}`,
@@ -64,10 +65,10 @@ const Content = styled(Typography)(({ theme, ...props }) => ({
 const ProgramsBox = ({ Title, Text, homePage = true, ...props }) => {
   return (
     <Box homePage={homePage} sx={props.sx} onClick={props.onClick}>
-      <Link>
-        <Heading>{Title}</Heading>
-        <Content>{Text}</Content>
-      </Link>
+      {/* <Link> */}
+      <Heading>{Title}</Heading>
+      <Content>{Text ? Text : null}</Content>
+      {/* </Link> */}
     </Box>
   );
 };

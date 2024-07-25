@@ -7,7 +7,7 @@ const MainHeading = styled(Typography)(({ theme, ...props }) => ({
 }));
 
 const ModuleHeading = styled(Typography)(({ theme, ...props }) => ({
-  font: "500 85px Play fair display",
+  font: "500 75px Play fair display",
   color: theme.palette.primary.text,
   letterSpacing: "5px",
 }));

@@ -1,9 +1,4 @@
-import {
-  MainHeading,
-  ModuleHeading,
-  Overlay,
-  ProgramContainer,
-} from "../../../Global/styled";
+import { ModuleHeading, ProgramContainer } from "../../../Global/styled";
 import {
   title01,
   title02,
@@ -17,15 +12,53 @@ import {
 
 import ProgramsBox from "../../../Components/ProgramsBox";
 import Divider from "../../../Global/Divider";
-import { Wrapper, HeroBox } from "./styled";
 import { useState } from "react";
 
 export default function ChooseProgram() {
-  const [active, setActive] = useState("");
+  const programs = [
+    {
+      Title: title01,
+      Text: text01,
+      onClick: () => {
+        handleActive(title01);
+      },
+      sx: () => {
+        return active === title01 ? activeStyle : null;
+      },
+    },
+    {
+      Title: title02,
+      Text: text02,
+      onClick: () => {
+        handleActive(title02);
+      },
+      sx: () => {
+        return active === title02 ? activeStyle : null;
+      },
+    },
+    {
+      Title: title03,
+      Text: text03,
+      onClick: () => {
+        handleActive(title03);
+      },
+      sx: () => {
+        return active === title03 ? activeStyle : null;
+      },
+    },
+    {
+      Title: title04,
+      Text: text04,
+      onClick: () => {
+        handleActive(title04);
+      },
+      sx: () => {
+        return active === title04 ? activeStyle : null;
+      },
+    },
+  ];
 
-  const onClick = (title) => {
-    handleActive(title);
-  };
+  const [active, setActive] = useState("");
 
   const handleActive = (title) => {
     setActive(title);
@@ -36,61 +69,59 @@ export default function ChooseProgram() {
   };
 
   return (
-    <Wrapper>
-      <Overlay>
-        <HeroBox>
-          <ModuleHeading>Choose a Program</ModuleHeading>
-          <Divider />
-          <ProgramContainer sx={{ pt: "60px" }}>
-            {" "}
-            {/* add sx padding 50 0 0 0 */}
-            <ProgramsBox
-              Title={title01}
-              Text={text01}
-              homePage={false}
-              onClick={() => {
-                onClick(title01);
-              }}
-              sx={() => {
-                return active === title01 ? activeStyle : null;
-              }}
-            />
-            <ProgramsBox
-              Title={title02}
-              Text={text02}
-              homePage={false}
-              onClick={() => {
-                onClick(title02);
-              }}
-              sx={() => {
-                return active === title02 ? activeStyle : null;
-              }}
-            />
-            <ProgramsBox
-              Title={title03}
-              Text={text03}
-              homePage={false}
-              onClick={() => {
-                onClick(title03);
-              }}
-              sx={() => {
-                return active === title03 ? activeStyle : null;
-              }}
-            />
-            <ProgramsBox
-              Title={title04}
-              Text={text04}
-              homePage={false}
-              onClick={() => {
-                onClick(title04);
-              }}
-              sx={() => {
-                return active === title04 ? activeStyle : null;
-              }}
-            />
-          </ProgramContainer>
-        </HeroBox>
-      </Overlay>
-    </Wrapper>
+    <>
+      <ModuleHeading>Select a Program</ModuleHeading>
+      <Divider />
+      <ProgramContainer sx={{ pt: "60px" }}>
+        {programs.map((obj) => {
+          return <ProgramsBox {...obj} homePage={false} />;
+        })}
+
+        {/* <ProgramsBox
+          Title={title01}
+          Text={text01}
+          homePage={false}
+          onClick={() => {
+            handleActive(title01);
+          }}
+          sx={() => {
+            return active === title01 ? activeStyle : null;
+          }}
+        />
+        <ProgramsBox
+          Title={title02}
+          Text={text02}
+          homePage={false}
+          onClick={() => {
+            handleActive(title02);
+          }}
+          sx={() => {
+            return active === title02 ? activeStyle : null;
+          }}
+        />
+        <ProgramsBox
+          Title={title03}
+          Text={text03}
+          homePage={false}
+          onClick={() => {
+            handleActive(title03);
+          }}
+          sx={() => {
+            return active === title03 ? activeStyle : null;
+          }}
+        />
+        <ProgramsBox
+          Title={title04}
+          Text={text04}
+          homePage={false}
+          onClick={() => {
+            handleActive(title04);
+          }}
+          sx={() => {
+            return active === title04 ? activeStyle : null;
+          }}
+        /> */}
+      </ProgramContainer>
+    </>
   );
 }
