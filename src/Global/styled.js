@@ -25,6 +25,7 @@ const ProgramContainer = styled("div")(() => ({
   gap: "50px",
   flexWrap: "wrap",
   justifyContent: "center",
+  alignContent: "center",
 }));
 
 export { MainHeading, Overlay, ProgramContainer, ModuleHeading };

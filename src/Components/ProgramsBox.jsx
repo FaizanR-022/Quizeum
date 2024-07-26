@@ -58,7 +58,7 @@ const Content = styled(Typography)(({ theme, ...props }) => ({
         font: "400 22px Poppins",
       }
     : {
-        font: "400 18px Poppins",
+        font: "400 17px Poppins",
       }),
 }));
 
@@ -66,8 +66,8 @@ const ProgramsBox = ({ Title, Text, homePage = true, ...props }) => {
   return (
     <Box homePage={homePage} sx={props.sx} onClick={props.onClick}>
       {/* <Link> */}
-      <Heading>{Title}</Heading>
-      <Content>{Text ? Text : null}</Content>
+      <Heading homePage={homePage}>{Title}</Heading>
+      <Content homePage={homePage}>{Text ? Text : null}</Content>
       {/* </Link> */}
     </Box>
   );

@@ -18,4 +18,14 @@ const HeroBox = styled("div")(({ theme, ...props }) => ({
   textAlign: "center",
 }));
 
-export { Wrapper, HeroBox };
+const activeStyle = {
+  border: (theme) => `3px solid ${theme.palette.primary.text}`,
+};
+
+// Box heights of steps
+const boxHeight = {
+  height: "50vh",
+  pt: "60px",
+};
+
+export { Wrapper, HeroBox, activeStyle, boxHeight };
