@@ -12,6 +12,7 @@ import ChooseLevels from "./ChooseLevels";
 import Instructions from "./Instructions";
 import SwipeableViews from "react-swipeable-views";
 import { useSelector } from "react-redux";
+import { handleQuery } from "../query";
 
 const steps = ["Programs", "Levels", "Instructions"];
 const pages = [<ChooseProgram />, <ChooseLevels />, <Instructions />];
@@ -34,7 +35,6 @@ export default function Steps() {
   };
 
   const disableNext = () => {
-    console.log(activeStep + activeProgram + activeLevel + "hello0");
     if (activeStep === 0) {
       return activeProgram ? false : true;
     } else if (activeStep === 1) {
@@ -88,7 +88,9 @@ export default function Steps() {
               <Box sx={{ flex: "1 1 auto" }} />
               {activeStep === steps.length - 1 ? (
                 <Button
-                  onClick={handleNext}
+                  onClick={() => {
+                    handleQuery(activeProgram, activeLevel);
+                  }}
                   sx={{
                     mr: "20px",
                     color: "primary.text",
