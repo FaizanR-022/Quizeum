@@ -4,7 +4,7 @@ import Divider from "../../../Global/Divider";
 import { ModuleHeading, ProgramContainer } from "../../../Global/styled";
 import { activeStyle, boxHeight } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLevel } from "./Slice";
+import { selectLevel } from "./Store/Slice";
 
 export default function ChooseLevels() {
   const levels = ["EASY", "MEDIUM", "HARD"];

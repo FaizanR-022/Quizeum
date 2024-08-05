@@ -22,7 +22,8 @@ const programContent = [
 const subjects = [
   {
     title: "BCAT",
-    text: "Basic Maths | English | IQ",
+    // text: "Basic Maths | History | GK",
+    text: "Basic Maths | ENGLISH | IQ",
   },
   {
     title: "ECAT",

@@ -7,7 +7,8 @@ const getRandom = (max) => {
 };
 
 const setOptions = (options, correctOption) => {
-  return options.splice(getRandom(options.length), 0, correctOption);
+  options.splice(getRandom(options.length), 0, correctOption);
+  return options;
 };
 
 const QuestionsSlice = createSlice({
@@ -15,16 +16,25 @@ const QuestionsSlice = createSlice({
   initialState,
   reducers: {
     setData: (state, action) => {
-      action.payload.map((object) => {
-        state.push({
+      if (!action.payload.results) {
+        return;
+      }
+
+      state.push({
+        name: action.payload.name,
+        content: action.payload.results.map((object) => ({
           question: object.question,
-          options: setOptions(object.incorrect.answers, correct.answer),
+          options: setOptions(object.incorrect_answers, object.correct_answer),
+          correctOption: object.correct_answer,
           selectAnswer: "",
-        });
+        })),
       });
+      console.log(state);
     },
+
+    clearData: (state, action) => (state = []),
   },
 });
 
-export const { setData } = QuestionsSlice.actions;
+export const { setData, clearData } = QuestionsSlice.actions;
 export default QuestionsSlice.reducer;

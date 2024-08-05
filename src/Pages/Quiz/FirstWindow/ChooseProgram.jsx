@@ -6,7 +6,7 @@ import Divider from "../../../Global/Divider";
 import { useState } from "react";
 import { activeStyle, boxHeight } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectProgram } from "./Slice";
+import { selectProgram } from "./Store/Slice";
 
 export default function ChooseProgram() {
   const dispatch = useDispatch();

@@ -4,15 +4,14 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { Wrapper, HeroBox } from "./styled";
 import { Overlay } from "../../../Global/styled";
 import ChooseProgram from "./ChooseProgram";
 import ChooseLevels from "./ChooseLevels";
 import Instructions from "./Instructions";
 import SwipeableViews from "react-swipeable-views";
-import { useSelector } from "react-redux";
-import { handleQuery } from "../query";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const steps = ["Programs", "Levels", "Instructions"];
 const pages = [<ChooseProgram />, <ChooseLevels />, <Instructions />];
@@ -21,6 +20,7 @@ export default function Steps() {
   const [activeStep, setActiveStep] = useState(0);
   const activeProgram = useSelector((state) => state.info.program);
   const activeLevel = useSelector((state) => state.info.level);
+  const navigate = useNavigate();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -89,7 +89,7 @@ export default function Steps() {
               {activeStep === steps.length - 1 ? (
                 <Button
                   onClick={() => {
-                    handleQuery(activeProgram, activeLevel);
+                    navigate("/quiz");
                   }}
                   sx={{
                     mr: "20px",
