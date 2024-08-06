@@ -1,6 +1,7 @@
 import { Button, Link, styled } from "@mui/material";
 import Logo from "../../assets/Logo.png";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled("div")(({ theme, ...props }) => ({
   display: "flex",
@@ -51,13 +52,16 @@ const Btn = styled(Button)(({ theme, ...props }) => ({
 // const NavBar = styled("nav")(({ theme, ...props }) => ({}));
 
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <LogoBox>
         <LogoImg src={Logo}></LogoImg>
       </LogoBox>
       <BtnBox>
-        <Btn endIcon={<DoubleArrowIcon />}>Start Now</Btn>
+        <Btn endIcon={<DoubleArrowIcon />} onClick={() => navigate("/details")}>
+          Start Now
+        </Btn>
       </BtnBox>
       {/* <NavBar>
         <ul>

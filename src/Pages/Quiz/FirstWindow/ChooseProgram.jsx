@@ -17,7 +17,6 @@ export default function ChooseProgram() {
       Title: title,
       Text: text,
       onClick: () => {
-        // handleActive(title);
         dispatch(selectProgram(title));
       },
       sx: () => {

@@ -43,8 +43,9 @@ const instructions = [
   "There are 5 questions for each subject.",
   "3 points are added on each right answer and 1 point is deducted on each wrong answer.",
   "Skipping the question will not affect your points.",
+  "Skipped questions can be attempted in the end",
   "10 minutes time for each subject, manage your time accordingly.",
-  "Test is based on Multiple choices questions only.",
+  "Select the option by clicking on the circle with it.",
 ];
 
 export { subjects, programContent, instructions };

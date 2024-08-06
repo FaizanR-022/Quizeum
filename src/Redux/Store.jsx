@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import infoReducer from "../Pages/Quiz/FirstWindow/Store/Slice";
-import QuesReducer from "../Pages/Quiz/QuizWindow/QuestionsSlice";
+import QuesReducer from "../Pages/Quiz/QuizWindow/Store/QuestionsSlice";
 import logger from "redux-logger";
 
 export const Store = configureStore({

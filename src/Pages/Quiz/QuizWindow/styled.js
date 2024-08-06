@@ -1,8 +1,7 @@
 import { styled, Typography } from "@mui/material";
 
 const Question = styled(Typography)(({ theme, ...props }) => ({
-  font: "500 30px Poppins",
-  color: theme.palette.primary.text,
+  font: "500 25px Poppins",
   letterSpacing: "1.3px",
 }));
 

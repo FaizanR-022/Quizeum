@@ -10,6 +10,7 @@ export const theme = createTheme({
       darkOrange: "#78290f",
       lightBlue: "#15616d",
       HeroBg: "rgba(0, 21, 36, 0.8)",
+      black: "#000",
     },
   },
 

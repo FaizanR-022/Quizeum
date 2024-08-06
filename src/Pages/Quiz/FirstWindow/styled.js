@@ -24,7 +24,7 @@ const activeStyle = {
 
 // Box heights of steps
 const boxHeight = {
-  height: "50vh",
+  maxHeight: "50vh",
   pt: "60px",
 };
 

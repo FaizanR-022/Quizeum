@@ -1,4 +1,4 @@
-import { Typography, styled } from "@mui/material";
+import { Button, Typography, styled } from "@mui/material";
 
 const MainHeading = styled(Typography)(({ theme, ...props }) => ({
   font: "500 90px Play fair display",
@@ -28,4 +28,28 @@ const ProgramContainer = styled("div")(() => ({
   alignContent: "center",
 }));
 
-export { MainHeading, Overlay, ProgramContainer, ModuleHeading };
+const BackgroundLayer = styled("div")(() => ({
+  backgroundColor: "#000",
+}));
+
+// Button for next question in Quiz
+const NextBtn = styled(Button)(({ theme, ...props }) => ({
+  marginRight: "20px",
+  color: theme.palette.primary.text,
+  backgroundColor: theme.palette.primary.main,
+  padding: "8px 20px",
+  transition: "all 0.3s ease",
+
+  "&: hover": {
+    backgroundColor: theme.palette.primary.orange,
+  },
+}));
+
+export {
+  MainHeading,
+  Overlay,
+  ProgramContainer,
+  ModuleHeading,
+  BackgroundLayer,
+  NextBtn,
+};

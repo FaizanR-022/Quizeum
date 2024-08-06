@@ -1,4 +1,4 @@
-import { setData } from "./QuestionsSlice";
+import { setData } from "./Store/QuestionsSlice";
 
 const bcat = [
   {
@@ -100,4 +100,11 @@ const handleQuery = (dispatch, program, level) => {
   });
 };
 
-export { handleQuery };
+function capitalizeFirstLetter(string) {
+  if (!string) {
+    return;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export { handleQuery, capitalizeFirstLetter };

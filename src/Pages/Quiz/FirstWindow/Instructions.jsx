@@ -11,9 +11,9 @@ const Box = styled("div")(({ theme, ...props }) => ({
   "& ul": {},
 
   "& li": {
-    font: "400 22px Poppins",
+    font: "400 20px Poppins",
     color: theme.palette.primary.text,
-    paddingBottom: "30px",
+    paddingBottom: "25px",
     textAlign: "left",
     paddingLeft: "20px",
   },

@@ -13,8 +13,11 @@ import { MainHeading, Overlay } from "../../../Global/styled";
 
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import HeroImg from "../../../assets/heroimg3.png";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
   return (
     <SectionWrapper>
       <Overlay
@@ -33,7 +36,11 @@ export default function HeroSection() {
               Your pathway to exam success for your dream university starts here
               with our comprehensive quiz preparation.
             </SubHeading>
-            <CTAbtn endIcon={<DoubleArrowIcon />} variant="outlined">
+            <CTAbtn
+              endIcon={<DoubleArrowIcon />}
+              onClick={() => navigate("/details")}
+              variant="outlined"
+            >
               LEt's Begin
             </CTAbtn>
           </TextSection>

@@ -1,56 +1,110 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setData } from "./QuestionsSlice";
 import { useEffect, useState } from "react";
-import { handleQuery } from "./helper";
+import { capitalizeFirstLetter, handleQuery } from "./helper";
 import { HeroBox, Wrapper } from "../FirstWindow/styled";
-import { ModuleHeading, Overlay } from "../../../Global/styled";
+import {
+  BackgroundLayer,
+  ModuleHeading,
+  NextBtn,
+  Overlay,
+} from "../../../Global/styled";
 import Divider from "../../../Global/Divider";
 import { Question } from "./styled";
-import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Box } from "@mui/material";
+import OptionBox from "../../../Components/OptionBox";
+import QuizInfoBox from "../../../Components/QuizInfoBox";
+import { motion } from "framer-motion";
+import { motionFade, motionSlide } from "../../../Global/motionStyling";
 
-export default function Quiz() {
+export default async function Quiz() {
   const dispatch = useDispatch();
   const activeProgram = useSelector((state) => state.info.program);
   const activeLevel = useSelector((state) => state.info.level);
-  const [alignment, setAlignment] = useState("web");
-
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
-  };
 
   useEffect(() => {
     console.log("hello");
-    handleQuery(dispatch, activeProgram, activeLevel);
+    if (activeProgram && activeLevel) {
+      handleQuery(dispatch, activeProgram, activeLevel);
+    }
   }, []);
 
-  const data = useSelector((state) => state.questions);
-  return (
-    <Wrapper>
-      <Overlay>
-        <HeroBox>
-          {/* Testing 9/15 */}
-          <ModuleHeading> 1/5</ModuleHeading>
-          <Divider />
-          <Box sx={{ textAlign: "left", padding: "80px 100px" }}>
-            <Question>✦&nbsp;&nbsp;How many days are in a week?</Question>
-            <ToggleButtonGroup
-              color="primary"
-              value={alignment}
-              orientation="vertical"
-              exclusive
-              onChange={handleChange}
-              aria-label="Platform"
-            >
-              <ToggleButton value="web">A</ToggleButton>
-              <h2>Option A</h2>
-              <ToggleButton value="android">Android</ToggleButton>
-              <ToggleButton value="ios">iOS</ToggleButton>
-            </ToggleButtonGroup>
-          </Box>
+  const data = await useSelector((state) => state.questions);
+  const content = [
+    activeProgram,
+    capitalizeFirstLetter(activeLevel?.toLowerCase()),
+  ];
 
-          {data.map((obj) => obj.name)}
-        </HeroBox>
-      </Overlay>
-    </Wrapper>
+  const [subject, setSubject] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const handleSubject = () => {
+    if (subject == data.length - 1) {
+      // navigate
+    }
+    setSubject((prev) => prev + 1);
+  };
+
+  const handleNext = () => {
+    if (count == 4) {
+      handleSubject();
+      return;
+    }
+    setCount((prev) => prev + 1);
+  };
+
+  return (
+    <BackgroundLayer>
+      <motion.div {...motionFade}>
+        <Wrapper>
+          <Overlay>
+            <HeroBox>
+              {/* {data.map((subject) => subject.content.map((obj) => <></>))} */}
+              <ModuleHeading sx={{ fontSize: "65px" }}>
+                {" "}
+                {count + 1}/5
+              </ModuleHeading>
+              <QuizInfoBox
+                content={[
+                  ...content,
+                  capitalizeFirstLetter(data[subject]?.name),
+                ]}
+                sx={{ position: "absolute", right: "20px", top: "65px" }}
+              />
+              <Divider />
+              <Box
+                sx={{
+                  textAlign: "left",
+                  padding: "50px 100px",
+                  color: "primary.text",
+                  height: "50vh",
+                }}
+              >
+                <Question>
+                  ✦&nbsp;&nbsp;{data[subject].content[count].question}
+                </Question>
+                <Box
+                  sx={{
+                    width: "40%",
+                    pt: "20px",
+                    pl: "40px",
+                  }}
+                >
+                  <OptionBox btn="A" text="Six" />
+                  <OptionBox btn="B" text="Seven" />
+                  <OptionBox btn="C" text="Eight" />
+                  <OptionBox btn="D" text="Nine" />
+                </Box>
+              </Box>
+              <Box
+                sx={{ display: "flex", justifyContent: "flex-end", pr: "20px" }}
+              >
+                <NextBtn>Skip</NextBtn>
+                <NextBtn onClick={handleNext}>Next</NextBtn>
+              </Box>
+            </HeroBox>
+          </Overlay>
+        </Wrapper>
+      </motion.div>
+    </BackgroundLayer>
   );
 }
