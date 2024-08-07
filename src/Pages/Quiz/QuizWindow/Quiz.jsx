@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { capitalizeFirstLetter, handleQuery } from "./helper";
-import { HeroBox, Wrapper } from "../FirstWindow/styled";
+import { HeroBox, Wrapper } from "../../../Global/styled";
 import {
   BackgroundLayer,
   ModuleHeading,
@@ -15,25 +15,36 @@ import OptionBox from "../../../Components/OptionBox";
 import QuizInfoBox from "../../../Components/QuizInfoBox";
 import { motion } from "framer-motion";
 import { motionFade, motionSlide } from "../../../Global/motionStyling";
+import Loader from "../../../Global/Loader/Loader";
+import QuizLoader from "../../../Global/Loader/QuizLoader";
 
-export default async function Quiz() {
+export default function Quiz() {
   const dispatch = useDispatch();
   const activeProgram = useSelector((state) => state.info.program);
   const activeLevel = useSelector((state) => state.info.level);
+  const [loading, setLoading] = useState(true);
+  // const data = [];
+
+  // const getData = () => {
+  //   data = useSelector((state) => state.questions);
+  //   setLoading(false);
+  // };
 
   useEffect(() => {
     console.log("hello");
     if (activeProgram && activeLevel) {
-      handleQuery(dispatch, activeProgram, activeLevel);
+      handleQuery(dispatch, activeProgram, activeLevel, setLoading);
+      // getData();
     }
   }, []);
 
-  const data = await useSelector((state) => state.questions);
+  const data = useSelector((state) => state.questions);
   const content = [
     activeProgram,
     capitalizeFirstLetter(activeLevel?.toLowerCase()),
   ];
 
+  const keys = ["A", "B", "C", "D"];
   const [subject, setSubject] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -47,13 +58,19 @@ export default async function Quiz() {
   const handleNext = () => {
     if (count == 4) {
       handleSubject();
+      setCount(0);
       return;
     }
     setCount((prev) => prev + 1);
   };
 
+  if (loading) {
+    return <QuizLoader />;
+  }
+
   return (
     <BackgroundLayer>
+      {console.log("hello" + loading)}
       <motion.div {...motionFade}>
         <Wrapper>
           <Overlay>
@@ -89,10 +106,13 @@ export default async function Quiz() {
                     pl: "40px",
                   }}
                 >
-                  <OptionBox btn="A" text="Six" />
+                  {data[subject].content[count].options.map((option, idx) => (
+                    <OptionBox btn={keys[idx]} text={option} />
+                  ))}
+                  {/* <OptionBox btn="A" text="Six" />
                   <OptionBox btn="B" text="Seven" />
                   <OptionBox btn="C" text="Eight" />
-                  <OptionBox btn="D" text="Nine" />
+                  <OptionBox btn="D" text="Nine" /> */}
                 </Box>
               </Box>
               <Box

@@ -77,12 +77,14 @@ const getCategory = (program) => {
   }
 };
 
-const handleQuery = (dispatch, program, level) => {
+const handleQuery = async (dispatch, program, level, setLoading) => {
   if (!program) {
     return;
   }
   const category = getCategory(program);
-  category.map(async (subject) => {
+
+  for (let i = 0; i < category.length; i++) {
+    const subject = category[i];
     const apiUrl = `https://opentdb.com/api.php?amount=5&category=${
       subject.id
     }&difficulty=${level.toLowerCase()}&type=multiple`;
@@ -97,7 +99,68 @@ const handleQuery = (dispatch, program, level) => {
           })
         );
       });
-  });
+
+    // Add a delay of 1 second (1000 milliseconds) before the next iteration
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    setLoading(false);
+  }
+
+  // let callCount = 0;
+  // let endInterval = () => {
+  //   clearInterval();
+  //   setLoading(false);
+  // };
+  // setInterval(async () => {
+  //   const apiUrl = `https://opentdb.com/api.php?amount=5&category=${
+  //     category[callCount].id
+  //   }&difficulty=${level.toLowerCase()}&type=multiple`;
+
+  //   await fetch(apiUrl)
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       dispatch(
+  //         setData({
+  //           name: category[callCount].name,
+  //           results: response.results,
+  //         })
+  //       );
+  //     });
+  //   callCount++;
+  //   callCount === category.length - 1 ? endInterval() : null;
+  // }, 1000);
+
+  // (async (subject) => {
+  //   const apiUrl = `https://opentdb.com/api.php?amount=5&category=${
+  //     subject.id
+  //   }&difficulty=${level.toLowerCase()}&type=multiple`;
+
+  //   await fetch(apiUrl)
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       dispatch(
+  //         setData({
+  //           name: subject.name,
+  //           results: response.results,
+  //         })
+  //       );
+  //     });
+  // });
+  // category.map(async (subject) => {
+  //   const apiUrl = `https://opentdb.com/api.php?amount=5&category=${
+  //     subject.id
+  //   }&difficulty=${level.toLowerCase()}&type=multiple`;
+
+  //   await fetch(apiUrl)
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       dispatch(
+  //         setData({
+  //           name: subject.name,
+  //           results: response.results,
+  //         })
+  //       );
+  //     });
+  // });
 };
 
 function capitalizeFirstLetter(string) {
@@ -107,4 +170,4 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export { handleQuery, capitalizeFirstLetter };
+export { handleQuery, capitalizeFirstLetter, getCategory };

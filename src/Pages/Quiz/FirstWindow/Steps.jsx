@@ -4,7 +4,7 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import { Wrapper, HeroBox } from "./styled";
+import { Wrapper, HeroBox } from "../../../Global/styled";
 import { BackgroundLayer, NextBtn, Overlay } from "../../../Global/styled";
 import ChooseProgram from "./ChooseProgram";
 import ChooseLevels from "./ChooseLevels";

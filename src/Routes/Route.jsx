@@ -3,6 +3,8 @@ import Home from "../Pages/Home/Home";
 import ChooseProgram from "../Pages/Quiz/FirstWindow/ChooseProgram";
 import Steps from "../Pages/Quiz/FirstWindow/Steps";
 import Quiz from "../Pages/Quiz/QuizWindow/Quiz";
+import Loader from "../Global/Loader/Loader";
+import QuizLoader from "../Global/Loader/QuizLoader";
 
 export const Route = createBrowserRouter([
   {
