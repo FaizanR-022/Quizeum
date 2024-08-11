@@ -5,9 +5,11 @@ const Question = styled(Typography)(({ theme, ...props }) => ({
   letterSpacing: "1.3px",
 }));
 
-const optionsBox = styled("div")(({ theme, ...props }) => ({
-  // display: "inline-flex"
-  display: "inline-block",
-}));
+// const optionsBox = styled("div")(({ theme, ...props }) => ({
+//   // display: "inline-flex"
+//   display: "inline-block",
+// }));
+
+const activeStyle = {};
 
 export { Question };

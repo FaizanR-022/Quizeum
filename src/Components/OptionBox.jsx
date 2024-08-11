@@ -19,13 +19,19 @@ const Btn = styled("button")(({ theme, ...props }) => ({
     color: theme.palette.primary.text,
   },
 }));
+
+const activeStyle = {
+  backgroundColor: (theme) => theme.palette.primary.main,
+  color: (theme) => theme.palette.primary.text,
+};
+
 const Text = styled(Typography)(({ theme, ...props }) => ({
   font: "400 25px Poppins",
   letterSpacing: "1.2px",
   textAlign: "left",
 }));
 
-const OptionBox = ({ theme, ...props }) => {
+const OptionBox = ({ theme, active = false, ...props }) => {
   return (
     <Box
       sx={{
@@ -35,7 +41,9 @@ const OptionBox = ({ theme, ...props }) => {
         pt: "36px",
       }}
     >
-      <Btn>{props.btn}</Btn>
+      <Btn onClick={props.onClick} sx={active ? activeStyle : null}>
+        {props.btn}
+      </Btn>
       <Text>{props.text}</Text>
     </Box>
   );

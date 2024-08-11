@@ -1,4 +1,4 @@
-import { setData } from "./Store/QuestionsSlice";
+import { clearData, setData } from "./Store/QuestionsSlice";
 
 const bcat = [
   {
@@ -82,6 +82,7 @@ const handleQuery = async (dispatch, program, level, setLoading) => {
     return;
   }
   const category = getCategory(program);
+  dispatch(clearData());
 
   for (let i = 0; i < category.length; i++) {
     const subject = category[i];

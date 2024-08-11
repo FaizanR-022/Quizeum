@@ -44,6 +44,10 @@ const NextBtn = styled(Button)(({ theme, ...props }) => ({
   "&: hover": {
     backgroundColor: theme.palette.primary.orange,
   },
+
+  "&: disabled": {
+    backgroundColor: "transparent",
+  },
 }));
 
 // Quiz Modules components

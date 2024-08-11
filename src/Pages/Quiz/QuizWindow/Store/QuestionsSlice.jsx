@@ -33,8 +33,17 @@ const QuestionsSlice = createSlice({
     },
 
     clearData: (state, action) => (state = []),
+
+    selectedAnswer: (state, action) => {
+      if (!action.payload) {
+        return;
+      }
+      state[action.payload.subject].content[
+        action.payload.question
+      ].selectAnswer = action.payload.text;
+    },
   },
 });
 
-export const { setData, clearData } = QuestionsSlice.actions;
+export const { setData, clearData, selectedAnswer } = QuestionsSlice.actions;
 export default QuestionsSlice.reducer;

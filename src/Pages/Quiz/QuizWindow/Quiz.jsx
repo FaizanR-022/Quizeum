@@ -17,21 +17,23 @@ import { motion } from "framer-motion";
 import { motionFade, motionSlide } from "../../../Global/motionStyling";
 import Loader from "../../../Global/Loader/Loader";
 import QuizLoader from "../../../Global/Loader/QuizLoader";
+import { selectedAnswer } from "./Store/QuestionsSlice";
+import SkippedQuiz from "./SkippedQuiz";
 
 export default function Quiz() {
   const dispatch = useDispatch();
   const activeProgram = useSelector((state) => state.info.program);
   const activeLevel = useSelector((state) => state.info.level);
   const [loading, setLoading] = useState(true);
-  // const data = [];
+  const [subject, setSubject] = useState(0);
+  const [count, setCount] = useState(0);
+  const [selected, setSelected] = useState("");
+  const [skipped, setSkipped] = useState([]);
+  const [isComplete, setIsComplete] = useState(false);
 
-  // const getData = () => {
-  //   data = useSelector((state) => state.questions);
-  //   setLoading(false);
-  // };
+  const keys = ["A", "B", "C", "D"];
 
   useEffect(() => {
-    console.log("hello");
     if (activeProgram && activeLevel) {
       handleQuery(dispatch, activeProgram, activeLevel, setLoading);
       // getData();
@@ -44,38 +46,63 @@ export default function Quiz() {
     capitalizeFirstLetter(activeLevel?.toLowerCase()),
   ];
 
-  const keys = ["A", "B", "C", "D"];
-  const [subject, setSubject] = useState(0);
-  const [count, setCount] = useState(0);
+  const nextQues = () => {
+    if (count == 4) {
+      handleSubject();
+      setCount(0);
+    } else {
+      setCount((prev) => prev + 1);
+    }
+    setSelected("");
+  };
 
   const handleSubject = () => {
     if (subject == data.length - 1) {
-      // navigate
+      setIsComplete(true);
+      return;
     }
     setSubject((prev) => prev + 1);
   };
 
+  const handleSkip = () => {
+    setSkipped((state) => [...state, { subject: subject, question: count }]);
+    nextQues();
+  };
+
   const handleNext = () => {
-    if (count == 4) {
-      handleSubject();
-      setCount(0);
-      return;
-    }
-    setCount((prev) => prev + 1);
+    dispatch(
+      selectedAnswer({
+        subject: subject,
+        question: count,
+        text: selected,
+      })
+    );
+    nextQues();
+  };
+
+  const props = {
+    skipped: skipped,
+    content: content,
+    data: data,
+    activeProgram: activeProgram,
+    activeLevel: activeLevel,
+    keys: keys,
   };
 
   if (loading) {
     return <QuizLoader />;
   }
 
+  if (isComplete) {
+    return <SkippedQuiz {...props} />;
+  }
+
   return (
     <BackgroundLayer>
-      {console.log("hello" + loading)}
       <motion.div {...motionFade}>
         <Wrapper>
           <Overlay>
             <HeroBox>
-              {/* {data.map((subject) => subject.content.map((obj) => <></>))} */}
               <ModuleHeading sx={{ fontSize: "65px" }}>
                 {" "}
                 {count + 1}/5
@@ -101,25 +128,33 @@ export default function Quiz() {
                 </Question>
                 <Box
                   sx={{
-                    width: "40%",
+                    width: "100%",
                     pt: "20px",
                     pl: "40px",
                   }}
                 >
                   {data[subject].content[count].options.map((option, idx) => (
-                    <OptionBox btn={keys[idx]} text={option} />
+                    <OptionBox
+                      btn={keys[idx]}
+                      text={option}
+                      onClick={() => {
+                        setSelected(option);
+                      }}
+                      active={selected === option ? true : false}
+                    />
                   ))}
-                  {/* <OptionBox btn="A" text="Six" />
-                  <OptionBox btn="B" text="Seven" />
-                  <OptionBox btn="C" text="Eight" />
-                  <OptionBox btn="D" text="Nine" /> */}
                 </Box>
               </Box>
               <Box
                 sx={{ display: "flex", justifyContent: "flex-end", pr: "20px" }}
               >
-                <NextBtn>Skip</NextBtn>
-                <NextBtn onClick={handleNext}>Next</NextBtn>
+                <NextBtn onClick={handleSkip}>Skip</NextBtn>
+                <NextBtn
+                  onClick={handleNext}
+                  disabled={selected ? false : true}
+                >
+                  Next
+                </NextBtn>
               </Box>
             </HeroBox>
           </Overlay>
