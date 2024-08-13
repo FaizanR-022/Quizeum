@@ -78,7 +78,7 @@ const getCategory = (program) => {
   }
 };
 
-const GenAI = new GoogleGenerativeAI("AIzaSyDaBDKn0uwzHXaHrr5GzLT2jeT0WO0EmGU");
+const GenAI = new GoogleGenerativeAI("");
 
 let model = GenAI.getGenerativeModel({
   model: "gemini-1.5-flash",
