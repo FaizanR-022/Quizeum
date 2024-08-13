@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { capitalizeFirstLetter, handleQuery } from "./helper";
+import {
+  capitalizeFirstLetter,
+  createMarkup,
+  handleApiCall,
+  handleQuery,
+} from "./helper";
 import { HeroBox, Wrapper } from "../../../Global/styled";
 import {
   BackgroundLayer,
@@ -36,6 +41,7 @@ export default function Quiz() {
   useEffect(() => {
     if (activeProgram && activeLevel) {
       handleQuery(dispatch, activeProgram, activeLevel, setLoading);
+      handleApiCall();
       // getData();
     }
   }, []);
@@ -123,8 +129,12 @@ export default function Quiz() {
                   height: "50vh",
                 }}
               >
-                <Question>
-                  ✦&nbsp;&nbsp;{data[subject].content[count].question}
+                <Question
+                  dangerouslySetInnerHTML={createMarkup(
+                    "✦&nbsp;&nbsp;" + data[subject].content[count].question
+                  )}
+                >
+                  {/* ✦&nbsp;&nbsp;{data[subject].content[count].question} */}
                 </Question>
                 <Box
                   sx={{
