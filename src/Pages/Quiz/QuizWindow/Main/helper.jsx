@@ -1,4 +1,4 @@
-import { clearData, setData } from "./Store/QuestionsSlice";
+import { clearData, setData } from "../Store/QuestionsSlice";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const bcat = [
@@ -77,8 +77,8 @@ const getCategory = (program) => {
       break;
   }
 };
-
-const GenAI = new GoogleGenerativeAI("");
+const apiKey = import.meta.env.VITE_API_KEY;
+const GenAI = new GoogleGenerativeAI(apiKey);
 
 let model = GenAI.getGenerativeModel({
   model: "gemini-1.5-flash",
@@ -97,10 +97,15 @@ count: 5 questions per subject
 Subjects: Maths, English, IQ
 Difficulty: Medium`;
 
-const handleApiCall = async () => {
+const handleApiCall = async (dispatch, program, level, setLoading) => {
+  const category = getCategory(program);
+  dispatch(clearData());
+
   let result = await model.generateContent(prompt);
-  // console.log(data.response.text());
-  let data = JSON.parse(result.response.text());
+  const data = JSON.parse(result.response.text());
+
+  dispatch(setData(data));
+  setLoading(false);
   console.log(data);
 };
 

@@ -16,20 +16,31 @@ const QuestionsSlice = createSlice({
   initialState,
   reducers: {
     setData: (state, action) => {
-      if (!action.payload.results) {
+      if (!action.payload) {
         return;
       }
 
-      state.push({
-        name: action.payload.name,
-        content: action.payload.results.map((object) => ({
-          question: object.question,
-          options: setOptions(object.incorrect_answers, object.correct_answer),
-          correctOption: object.correct_answer,
-          selectAnswer: "",
-        })),
-      });
-      console.log(state);
+      // state = action.payload;
+      action.payload.map((object) =>
+        state.push({
+          name: object.name,
+          content: object.content.map((data) => ({
+            ...data,
+            selectAnswer: "",
+          })),
+        })
+      );
+
+      // state.push({
+      //   name: action.payload.name,
+      //   // content: action.payload.results.map((object) => ({
+      //   //   question: object.question,
+      //   //   options: setOptions(object.incorrect_answers, object.correct_answer),
+      //   //   correctOption: object.correct_answer,
+      //   //   selectAnswer: "",
+      //   // })),
+      //   content: { ...action.payload.content, selectAnswer: "" },
+      // });
     },
 
     clearData: (state, action) => (state = []),

@@ -1,6 +1,7 @@
 html {
   scrollbar-width: thin;
-  scrollbar-color: #001524 #78290f;
+  /* scrollbar-color: #001524 #78290f; */
+  scrollbar-color: #ffecd1 #000;
 }
 
 body {
