@@ -5,9 +5,20 @@ import UpdateIcon from "@mui/icons-material/Update";
 import FeatureBox from "../../../Components/FeatureBox";
 import Divider from "../../../Global/Divider";
 
+const Title = [
+  "Program-specific Quizzes",
+  "Up-to-Date Content",
+  "Performance Analytics",
+];
+
 const firstTitle = "Up-to-Date Content";
 const firstText =
   "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, distinctio. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, distinctio.";
+
+const centerBoxStyle = {
+  border: (theme) => `2px dotted ${theme.palette.primary.orange}`,
+  borderWidth: "0 2px",
+};
 
 export default function Features() {
   return (

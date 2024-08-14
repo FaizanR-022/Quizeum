@@ -1,3 +1,8 @@
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #001524 #78290f;
+}
+
 body {
   margin: 0;
   padding: 0;

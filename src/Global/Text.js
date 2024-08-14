@@ -48,4 +48,10 @@ const instructions = [
   "Select the option by clicking on the circle with it.",
 ];
 
-export { subjects, programContent, instructions };
+const featureText = [
+  "Tailored quizzes for each program ensure targeted practice and relevant content, aligning with specific course objectives and learning goals",
+  "Regularly updated material guarantees that users access the most current and accurate information, reflecting the latest trends and developments",
+  "Detailed analytics track user performance, showing strengths and areas for improvement to help guide effective learning strategies and progress",
+];
+
+export { subjects, programContent, instructions, featureText };
