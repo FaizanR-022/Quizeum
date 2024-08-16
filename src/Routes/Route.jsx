@@ -5,6 +5,7 @@ import Steps from "../Pages/Quiz/FirstWindow/Steps";
 import Quiz from "../Pages/Quiz/QuizWindow/Main/Quiz";
 import Loader from "../Global/Loader/Loader";
 import QuizLoader from "../Global/Loader/QuizLoader";
+import Results from "../Pages/Quiz/QuizWindow/Result/Results";
 
 export const Route = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const Route = createBrowserRouter([
   {
     path: "/quiz",
     element: <Quiz />,
+  },
+  {
+    path: "/results",
+    element: <Results />,
   },
 ]);

@@ -14,7 +14,7 @@ const QuizInfoBox = ({ theme, ...props }) => {
     <Box
       sx={{
         ...props.sx,
-        width: "15%",
+        width: "17%",
         backgroundColor: "primary.bgBlue",
         // border: (theme) => `2px solid ${theme.palette.primary.main}`,
         borderRadius: "15px",

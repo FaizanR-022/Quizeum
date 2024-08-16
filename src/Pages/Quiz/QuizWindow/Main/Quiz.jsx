@@ -14,8 +14,10 @@ import { selectedAnswer } from "../Store/QuestionsSlice";
 import SkippedQuiz from "./SkippedQuiz";
 import BackgroundLayers from "../../BackgroundLayers";
 import CountDown from "../../../../Components/CountDown";
+import { useNavigate } from "react-router-dom";
 
 export default function Quiz() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const activeProgram = useSelector((state) => state.info.program);
   const activeLevel = useSelector((state) => state.info.level);
@@ -55,6 +57,9 @@ export default function Quiz() {
 
   const handleSubject = () => {
     if (subject == data.length - 1) {
+      if (!skipped) {
+        navigate("/results");
+      }
       setIsComplete(true);
       return;
     }
@@ -94,12 +99,13 @@ export default function Quiz() {
     return <SkippedQuiz {...props} />;
   }
 
-  console.log("min " + minute + "sec " + second);
-
-  if (minute === 0 && second === 0) {
-    console.log("executed");
-    return <QuizLoader />;
+  if (isComplete) {
   }
+
+  // if (minute === 0 && second === 0) {
+  //   console.log("executed");
+  //   return <QuizLoader />;
+  // }
 
   return (
     <BackgroundLayers motionType={motionFade}>

@@ -10,6 +10,7 @@ import QuizInfoBox from "../../../../Components/QuizInfoBox";
 import { motionFade } from "../../../../Global/motionStyling";
 import { selectedAnswer } from "../Store/QuestionsSlice";
 import BackgroundLayers from "../../BackgroundLayers";
+import { useNavigate } from "react-router-dom";
 
 export default function SkippedQuiz({
   skipped,
@@ -21,10 +22,17 @@ export default function SkippedQuiz({
   ...props
 }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [count, setCount] = useState(0);
   const subject = skipped[count].subject;
   const question = skipped[count].question;
   const [selected, setSelected] = useState("");
+
+  const onLastIdx = () => {
+    if (count == skipped.length - 1) {
+      navigate("/results");
+    }
+  };
 
   const handleNext = () => {
     dispatch(
@@ -34,11 +42,13 @@ export default function SkippedQuiz({
         text: selected,
       })
     );
+    onLastIdx();
     setCount((prev) => prev + 1);
     setSelected("");
   };
 
   const handleSkip = () => {
+    onLastIdx();
     setCount((prev) => prev + 1);
     setSelected("");
   };
