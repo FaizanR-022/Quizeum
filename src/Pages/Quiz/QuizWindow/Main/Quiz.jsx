@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { capitalizeFirstLetter, createMarkup, handleApiCall } from "./helper";
+import { capitalizeFirstLetter, handleApiCall } from "./helper";
 
 import { HeroBox, ModuleHeading, NextBtn } from "../../../../Global/styled";
 import Divider from "../../../../Global/Divider";
@@ -13,6 +13,7 @@ import QuizLoader from "../../../../Global/Loader/QuizLoader";
 import { selectedAnswer } from "../Store/QuestionsSlice";
 import SkippedQuiz from "./SkippedQuiz";
 import BackgroundLayers from "../../BackgroundLayers";
+import CountDown from "../../../../Components/CountDown";
 
 export default function Quiz() {
   const dispatch = useDispatch();
@@ -24,6 +25,8 @@ export default function Quiz() {
   const [selected, setSelected] = useState("");
   const [skipped, setSkipped] = useState([]);
   const [isComplete, setIsComplete] = useState(false);
+  const [minute, setMinute] = useState(1);
+  const [second, setSecond] = useState(1);
 
   const keys = ["A", "B", "C", "D"];
 
@@ -31,7 +34,6 @@ export default function Quiz() {
     if (activeProgram && activeLevel) {
       // handleQuery(dispatch, activeProgram, activeLevel, setLoading);
       handleApiCall(dispatch, activeProgram, activeLevel, setLoading);
-      // getData();
     }
   }, []);
 
@@ -92,12 +94,27 @@ export default function Quiz() {
     return <SkippedQuiz {...props} />;
   }
 
+  console.log("min " + minute + "sec " + second);
+
+  if (minute === 0 && second === 0) {
+    console.log("executed");
+    return <QuizLoader />;
+  }
+
   return (
     <BackgroundLayers motionType={motionFade}>
       <ModuleHeading sx={{ fontSize: "65px" }}> {count + 1}/5</ModuleHeading>
       <QuizInfoBox
         content={[...content, capitalizeFirstLetter(data[subject]?.name)]}
-        sx={{ position: "absolute", right: "20px", top: "65px" }}
+        sx={{ position: "absolute", left: "15%", top: "8%" }}
+      />
+      <CountDown
+        initialTime={60 * 1}
+        minute={minute}
+        second={second}
+        setMinute={setMinute}
+        setSecond={setSecond}
+        sx={{ position: "absolute", right: "15%", top: "10%" }}
       />
       <Divider />
       <Box
@@ -109,11 +126,11 @@ export default function Quiz() {
         }}
       >
         <Question
-          dangerouslySetInnerHTML={createMarkup(
-            "✦&nbsp;&nbsp;" + data[subject].content[count].question
-          )}
+        // dangerouslySetInnerHTML={createMarkup(
+        //   "✦&nbsp;&nbsp;" + data[subject].content[count].question
+        // )}
         >
-          {/* ✦&nbsp;&nbsp;{data[subject].content[count].question} */}
+          ✦&nbsp;&nbsp;{data[subject].content[count].question}
         </Question>
         <Box
           sx={{

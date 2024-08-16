@@ -44,7 +44,7 @@ const instructions = [
   "3 points are added on each right answer and 1 point is deducted on each wrong answer.",
   "Skipping the question will not affect your points.",
   "Skipped questions can be attempted in the end",
-  "10 minutes time for each subject, manage your time accordingly.",
+  "The test must be completed within 10 minutes",
   "Select the option by clicking on the circle with it.",
 ];
 
