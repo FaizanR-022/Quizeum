@@ -6,6 +6,7 @@ import Quiz from "../Pages/Quiz/QuizWindow/Main/Quiz";
 import Loader from "../Global/Loader/Loader";
 import QuizLoader from "../Global/Loader/QuizLoader";
 import Results from "../Pages/Quiz/QuizWindow/Result/Results";
+import Answers from "../Pages/Quiz/QuizWindow/Answers/Answers";
 
 export const Route = createBrowserRouter([
   {
@@ -30,5 +31,9 @@ export const Route = createBrowserRouter([
   {
     path: "/results",
     element: <Results />,
+  },
+  {
+    path: "/answers",
+    element: <Answers />,
   },
 ]);

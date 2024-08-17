@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled, useTheme } from "@mui/material";
 import { PieChart, useDrawingArea } from "@mui/x-charts";
 
 const StyledText = styled("text")(({ theme }) => ({
@@ -20,19 +20,29 @@ function PieCenterLabel({ children }) {
 }
 
 export default function SinglePieChart({ result }) {
+  const theme = useTheme();
   const data = [
-    { value: result.correct, color: "green" },
-    { value: result.skip, color: "gray" },
-    { value: result.wrong, color: "red" },
+    {
+      value: result.correct,
+      color: theme.palette.primary.green,
+      label: "correct",
+    },
+    { value: result.skip, color: "gray", label: "skip" },
+    { value: result.wrong, color: theme.palette.primary.red, label: "wrong" },
   ];
 
-  const size = {
-    width: 420,
+  const props = {
+    width: 320,
     height: 220,
+    // margin: 0,
+    margin: { right: 5 },
+    slotProps: {
+      legend: { hidden: true },
+    },
   };
 
   return (
-    <PieChart series={[{ data, innerRadius: 65 }]} {...size}>
+    <PieChart series={[{ data, innerRadius: 65 }]} {...props}>
       <PieCenterLabel>{result.name}</PieCenterLabel>
     </PieChart>
   );

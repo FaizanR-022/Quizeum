@@ -32,7 +32,7 @@ let model = GenAI.getGenerativeModel({
 let prompt = (
   category,
   level
-) => `"Generate an array of objects in JSON format. Each object should contain the following:
+) => `"Generate an array of objects in JSON format. Each object should contain the following(strict follow this schema):
 - name: A string containing the name of the subject
 - content: An array of multiple choices question objects.
 Each question object should contain:
@@ -42,7 +42,10 @@ Each question object should contain:
 
 count: 5 questions per subject
 Subjects: ${category}
-Difficulty: ${level.toLowerCase()}`;
+Difficulty: ${level.toLowerCase()}
+
+Note: Please generate new questions on every request and question should be of atleast college standard
+`;
 
 const handleApiCall = async (dispatch, program, level, setLoading) => {
   const category = getCategory(program);

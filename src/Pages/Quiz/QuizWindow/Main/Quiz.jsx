@@ -4,14 +4,13 @@ import { capitalizeFirstLetter, handleApiCall } from "./helper";
 
 import { HeroBox, ModuleHeading, NextBtn } from "../../../../Global/styled";
 import Divider from "../../../../Global/Divider";
-import { Question } from "./styled";
+import { Question } from "../styled";
 import { Box } from "@mui/material";
 import OptionBox from "../../../../Components/OptionBox";
 import QuizInfoBox from "../../../../Components/QuizInfoBox";
 import { motionFade, motionSlide } from "../../../../Global/motionStyling";
 import QuizLoader from "../../../../Global/Loader/QuizLoader";
 import { selectedAnswer } from "../Store/QuestionsSlice";
-import SkippedQuiz from "./SkippedQuiz";
 import BackgroundLayers from "../../BackgroundLayers";
 import CountDown from "../../../../Components/CountDown";
 import { useNavigate } from "react-router-dom";
@@ -25,8 +24,6 @@ export default function Quiz() {
   const [subject, setSubject] = useState(0);
   const [count, setCount] = useState(0);
   const [selected, setSelected] = useState("");
-  const [skipped, setSkipped] = useState([]);
-  const [isComplete, setIsComplete] = useState(false);
   const [minute, setMinute] = useState(1);
   const [second, setSecond] = useState(1);
 
@@ -57,17 +54,13 @@ export default function Quiz() {
 
   const handleSubject = () => {
     if (subject == data.length - 1) {
-      if (!skipped) {
-        navigate("/results");
-      }
-      setIsComplete(true);
+      navigate("/results");
       return;
     }
     setSubject((prev) => prev + 1);
   };
 
   const handleSkip = () => {
-    setSkipped((state) => [...state, { subject: subject, question: count }]);
     nextQues();
   };
 
@@ -82,30 +75,15 @@ export default function Quiz() {
     nextQues();
   };
 
-  const props = {
-    skipped: skipped,
-    content: content,
-    data: data,
-    activeProgram: activeProgram,
-    activeLevel: activeLevel,
-    keys: keys,
-  };
-
   if (loading) {
     return <QuizLoader />;
   }
 
-  if (isComplete && skipped) {
-    return <SkippedQuiz {...props} />;
+  if (minute === 0 && second === 0) {
+    // console.log("executed");
+    // return <QuizLoader />;
+    navigate("/results");
   }
-
-  if (isComplete) {
-  }
-
-  // if (minute === 0 && second === 0) {
-  //   console.log("executed");
-  //   return <QuizLoader />;
-  // }
 
   return (
     <BackgroundLayers motionType={motionFade}>

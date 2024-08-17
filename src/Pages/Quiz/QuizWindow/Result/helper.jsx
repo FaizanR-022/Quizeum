@@ -20,6 +20,7 @@ export const generateResult = (data) => {
       correct: correct,
       wrong: wrong,
       skip: skip,
+      points: correct * 3 - wrong,
     });
   }
 

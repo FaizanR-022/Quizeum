@@ -60,6 +60,7 @@ const Wrapper = styled("div")(({ theme, ...props }) => ({
 }));
 
 const HeroBox = styled("div")(({ theme, ...props }) => ({
+  // minHeight: "85vh",
   height: "85%",
   width: "80%",
   borderRadius: "15px",
