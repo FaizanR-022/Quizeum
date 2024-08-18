@@ -3,12 +3,13 @@ import BackgroundLayers from "../../BackgroundLayers";
 import { motionFade } from "../../../../Global/motionStyling";
 import { useSelector } from "react-redux";
 import { generateResult } from "./helper";
-import { ModuleHeading } from "../../../../Global/styled";
+import { ModuleHeading, NextBtn } from "../../../../Global/styled";
 import Divider from "../../../../Global/Divider";
 import { Box, Stack } from "@mui/material";
 import SinglePieChart from "../../../../Components/SinglePieChart";
 import ResultTable from "../../../../Components/ResultTable";
 import { Overlaysx } from "../styled";
+import { useNavigate } from "react-router-dom";
 
 const Message = (pts, total) => {
   const perc = (pts / total) * 100;
@@ -24,6 +25,7 @@ const Message = (pts, total) => {
 
 export default function Results() {
   const theme = useTheme();
+  const navigate = useNavigate();
   const data = useSelector((state) => state.questions);
   const results = generateResult(data);
   const Totalpts = () => {
@@ -53,6 +55,7 @@ export default function Results() {
           alignItems: "center",
           alignContent: "center",
           padding: "5px 70px",
+          pb: "50px",
         }}
       >
         <Stack
@@ -74,6 +77,21 @@ export default function Results() {
         <ModuleHeading sx={textStyle}>
           {Message(Totalpts(), results.length * 15)}
         </ModuleHeading>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "end",
+            // alignContent: "flex-end",
+          }}
+        >
+          <NextBtn
+            sx={{ fontFamily: "Poppins" }}
+            onClick={() => navigate("/answers")}
+          >
+            See Answers ➡
+          </NextBtn>
+        </Box>
       </Box>
     </BackgroundLayers>
   );
