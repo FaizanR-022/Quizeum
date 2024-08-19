@@ -7,6 +7,8 @@ import Loader from "../Global/Loader/Loader";
 import QuizLoader from "../Global/Loader/QuizLoader";
 import Results from "../Pages/Quiz/QuizWindow/Result/Results";
 import Answers from "../Pages/Quiz/QuizWindow/Answers/Answers";
+import Header from "../Pages/Home/Header";
+import QuizHeader from "../Pages/Quiz/QuizWindow/Header-Footer/Header";
 
 export const Route = createBrowserRouter([
   {
@@ -21,16 +23,32 @@ export const Route = createBrowserRouter([
 
   {
     path: "/details",
-    element: <Steps />,
+    element: (
+      <>
+        {/* <Header /> */}
+        {/* <QuizHeader /> */}
+        <Steps />
+      </>
+    ),
   },
 
   {
     path: "/quiz",
-    element: <Quiz />,
+    element: (
+      <>
+        <Header />
+        <Quiz />
+      </>
+    ),
   },
   {
     path: "/results",
-    element: <Results />,
+    element: (
+      <>
+        <Header />
+        <Results />
+      </>
+    ),
   },
   {
     path: "/answers",

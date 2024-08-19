@@ -26,6 +26,7 @@ export default function Quiz() {
   const [selected, setSelected] = useState("");
   const [minute, setMinute] = useState(1);
   const [second, setSecond] = useState(1);
+  const timer = 60 * 1;
 
   const keys = ["A", "B", "C", "D"];
 
@@ -93,7 +94,7 @@ export default function Quiz() {
         sx={{ position: "absolute", left: "15%", top: "8%" }}
       />
       <CountDown
-        initialTime={60 * 1}
+        initialTime={timer}
         minute={minute}
         second={second}
         setMinute={setMinute}

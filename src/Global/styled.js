@@ -16,7 +16,9 @@ const ModuleHeading = styled(Typography)(({ theme, ...props }) => ({
 const Overlay = styled("div")(({ theme, ...props }) => ({
   backgroundColor: "rgba(0, 0,0,0.9)",
   display: "flex",
-  height: "100vh",
+  flexDirection: "column",
+  minHeight: "100vh",
+  // height: "100vh",
   justifyContent: "center",
   alignItems: "center",
 }));
@@ -61,7 +63,8 @@ const Wrapper = styled("div")(({ theme, ...props }) => ({
 
 const HeroBox = styled("div")(({ theme, ...props }) => ({
   // minHeight: "85vh",
-  height: "85%",
+  // height: "75%",
+  // maxHeight: "75%",
   width: "80%",
   borderRadius: "15px",
   backgroundColor: theme.palette.primary.darkOrange,
