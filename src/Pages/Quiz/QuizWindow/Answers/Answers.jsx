@@ -15,10 +15,6 @@ import { Overlaysx } from "../styled";
 import { ModuleHeading } from "../../../../Global/styled";
 import Divider from "../../../../Global/Divider";
 
-const HeroBoxsx = {
-  minHeight: "85vh",
-};
-
 const Title = styled(Typography)(({ theme, ...props }) => ({
   color: theme.palette.primary.orange,
   font: "700 22px Raleway",
@@ -52,8 +48,7 @@ export default function Answers() {
   return (
     <BackgroundLayers
       motionType={motionFade}
-      Overlaysx={Overlaysx}
-      HeroBoxsx={HeroBoxsx}
+      Overlaysx={{ backgroundColor: "rgba(0,0,0,0.95)", ...Overlaysx }}
     >
       <ModuleHeading>Answers</ModuleHeading>
       <Divider />

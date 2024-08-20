@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import ProgramsBox from "../../../Components/ProgramsBox";
-import Divider from "../../../Global/Divider";
-import { ModuleHeading, ProgramContainer } from "../../../Global/styled";
-import { activeStyle, boxHeight } from "./styled";
+import ProgramsBox from "../../../../Components/ProgramsBox";
+import Divider from "../../../../Global/Divider";
+import { ModuleHeading, ProgramContainer } from "../../../../Global/styled";
+import { activeStyle, boxHeight } from "../styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLevel } from "./Store/Slice";
+import { selectLevel } from "../Store/Slice";
 
 export default function ChooseLevels() {
   const levels = ["EASY", "MEDIUM", "HARD"];
@@ -40,7 +40,7 @@ export default function ChooseLevels() {
         sx={{ flexDirection: "column", gap: "25px", ...boxHeight }}
       >
         {levels.map((level) => {
-          return <ProgramsBox {...onClick(level)} homePage={false} />;
+          return <ProgramsBox {...onClick(level)} homepage={false} />;
         })}
       </ProgramContainer>
     </>

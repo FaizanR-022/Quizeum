@@ -21,36 +21,41 @@ const BgImage = styled("div")(() => ({
 }));
 
 const HeroBox = styled("div")(({ theme, ...props }) => ({
-  height: "85%",
+  height: "80%",
   width: "80%",
   borderRadius: "15px",
   backgroundColor: theme.palette.primary.HeroBg,
   padding: "0 40px",
   display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "space-between",
 }));
 
 const TextSection = styled("div")(({ theme, ...props }) => ({
   color: theme.palette.primary.text,
   alignContent: "center",
-  padding: "0 140px 0 0",
+  // padding: "0 140px 0 0",
+  width: "50%",
 }));
 
-const ImageSection = styled("div")(() => ({}));
+const ImageSection = styled("div")(() => ({
+  width: "35%",
+}));
 const Image = styled("img")(() => ({
-  height: "620px",
+  height: "560px",
   paddingBottom: "40px",
 }));
 
 const SubHeading = styled(Typography)(({ theme, ...props }) => ({
-  font: "20px Verdana",
+  font: "18px Verdana",
   lineHeight: "32px",
   letterSpacing: "2px",
   paddingBottom: "50px",
 }));
 
 const CTAbtn = styled(Button)(({ theme, ...props }) => ({
-  font: "700 20px Raleway",
-  padding: "14px",
+  font: "600 17px Raleway",
+  padding: "10px",
   margin: "15px 0",
   // borderRadius: "25px",
   backgroundColor: theme.palette.primary.orange,

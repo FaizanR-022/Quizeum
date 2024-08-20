@@ -8,7 +8,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import logo from "../../assets/Logo.png";
+import logo from "../../../assets/Logo.png";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -82,8 +82,8 @@ export default function Footer() {
         <Logo src={logo}></Logo>
         {/* </Link> */}
         <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi animi
-          reiciendis, nostrum harum repudiandae consequatur!
+          Empowering your journey to academic excellence with tailored quizzes
+          designed for your ultimate exam success.
         </Text>
         <Icons>
           <Link href={href} target="_blank">

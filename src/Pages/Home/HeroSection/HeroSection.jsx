@@ -23,8 +23,9 @@ export default function HeroSection() {
       <Overlay
         sx={{
           height: "750px",
-          pt: "80px",
-          pb: "100px",
+          pt: "150px",
+          backgroundColor: "rgba(0,0,0,0.93)",
+          // pb: "100px",
         }}
       >
         <HeroBox>
@@ -41,7 +42,7 @@ export default function HeroSection() {
               onClick={() => navigate("/details")}
               variant="outlined"
             >
-              LEt's Begin
+              Let's Begin
             </CTAbtn>
           </TextSection>
           <ImageSection>

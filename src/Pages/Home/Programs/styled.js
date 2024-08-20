@@ -10,7 +10,7 @@ const BgImage = styled("div")(() => ({
 
 const SectionWrapper = styled("div")(() => ({
   backgroundColor: "rgba(0,0,0,0.85)",
-  height: "700px",
+  height: "630px",
   padding: "110px 70px 150px 70px",
   textAlign: "center",
 }));

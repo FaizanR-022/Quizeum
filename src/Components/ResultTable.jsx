@@ -61,7 +61,8 @@ export default function ResultTable({ results }) {
 
   const headings = ["Correct", "Skip", "Wrong", "Points"];
 
-  const toStr = (number) => (number < 10 ? "0" + number : number.toString());
+  const toStr = (number) =>
+    number < 10 && number >= 0 ? "0" + number : number.toString();
 
   return (
     <TableContainer component={Paper} sx={style}>

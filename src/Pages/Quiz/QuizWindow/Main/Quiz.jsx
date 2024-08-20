@@ -14,19 +14,24 @@ import { selectedAnswer } from "../Store/QuestionsSlice";
 import BackgroundLayers from "../../BackgroundLayers";
 import CountDown from "../../../../Components/CountDown";
 import { useNavigate } from "react-router-dom";
+import ConfirmationDialogBox from "../../../../Components/ConfirmationDialogBox";
 
 export default function Quiz() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const activeProgram = useSelector((state) => state.info.program);
   const activeLevel = useSelector((state) => state.info.level);
+
   const [loading, setLoading] = useState(true);
   const [subject, setSubject] = useState(0);
   const [count, setCount] = useState(0);
   const [selected, setSelected] = useState("");
   const [minute, setMinute] = useState(1);
   const [second, setSecond] = useState(1);
-  const timer = 60 * 1;
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const timer = 60 * 10;
 
   const keys = ["A", "B", "C", "D"];
 
@@ -42,6 +47,14 @@ export default function Quiz() {
     activeProgram,
     capitalizeFirstLetter(activeLevel?.toLowerCase()),
   ];
+
+  const handleQuitBtn = () => {
+    setOpenDialog(true);
+  };
+
+  const quitQuiz = () => {
+    navigate("/results");
+  };
 
   const nextQues = () => {
     if (count == 4) {
@@ -91,7 +104,7 @@ export default function Quiz() {
       <ModuleHeading sx={{ fontSize: "65px" }}> {count + 1}/5</ModuleHeading>
       <QuizInfoBox
         content={[...content, capitalizeFirstLetter(data[subject]?.name)]}
-        sx={{ position: "absolute", left: "15%", top: "8%" }}
+        sx={{ position: "absolute", left: "15%", top: "15%" }}
       />
       <CountDown
         initialTime={timer}
@@ -99,15 +112,15 @@ export default function Quiz() {
         second={second}
         setMinute={setMinute}
         setSecond={setSecond}
-        sx={{ position: "absolute", right: "15%", top: "10%" }}
+        sx={{ position: "absolute", right: "15%", top: "17%" }}
       />
       <Divider />
       <Box
         sx={{
           textAlign: "left",
-          padding: "50px 100px",
+          padding: "30px 70px 15px 70px",
           color: "primary.text",
-          height: "50vh",
+          minHeight: "50vh",
         }}
       >
         <Question
@@ -120,7 +133,7 @@ export default function Quiz() {
         <Box
           sx={{
             width: "100%",
-            pt: "20px",
+            pt: "16px",
             pl: "40px",
           }}
         >
@@ -136,7 +149,24 @@ export default function Quiz() {
           ))}
         </Box>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "flex-end", pr: "20px" }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", pr: "70px" }}>
+        <NextBtn
+          sx={{
+            backgroundColor: "primary.red",
+            "&: hover": {
+              backgroundColor: "primary.black",
+            },
+          }}
+          onClick={handleQuitBtn}
+        >
+          Quit
+        </NextBtn>
+        <ConfirmationDialogBox
+          open={openDialog}
+          setOpen={setOpenDialog}
+          handleQuit={quitQuiz}
+        />
+        <Box sx={{ width: "6%" }} />
         <NextBtn onClick={handleSkip}>Skip</NextBtn>
         <NextBtn onClick={handleNext} disabled={selected ? false : true}>
           Next

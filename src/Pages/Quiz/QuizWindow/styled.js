@@ -1,12 +1,13 @@
 import { styled, Typography } from "@mui/material";
 
 export const Question = styled(Typography)(({ theme, ...props }) => ({
-  font: "500 25px Poppins",
+  font: "500 21px Poppins",
   letterSpacing: "1.3px",
 }));
 
+// For Result & Answer window
 export const Overlaysx = {
-  minHeight: "100vh",
+  minHeight: "97vh",
   height: "min-content",
-  padding: "4vh 0",
+  pb: "4vh",
 };

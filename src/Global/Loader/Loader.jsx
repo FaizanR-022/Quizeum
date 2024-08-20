@@ -3,8 +3,8 @@ import "./Loader.css";
 import { BackgroundLayer } from "../styled";
 import { motion } from "framer-motion";
 import { motionFade } from "../motionStyling";
-import Header from "../../Pages/Home/Header";
-import Footer from "../../Pages/Home/Footer";
+import Header from "../../Pages/Home/Header-Footer/Header";
+import Footer from "../../Pages/Home/Header-Footer/Footer";
 
 export default function Loader() {
   return (

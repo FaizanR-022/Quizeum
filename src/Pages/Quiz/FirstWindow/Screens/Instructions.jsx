@@ -1,8 +1,8 @@
 import { List, ListItem, styled } from "@mui/material";
-import Divider from "../../../Global/Divider";
-import { ModuleHeading, ProgramContainer } from "../../../Global/styled";
-import { instructions } from "../../../Global/Text";
-import { boxHeight } from "./styled";
+import Divider from "../../../../Global/Divider";
+import { ModuleHeading, ProgramContainer } from "../../../../Global/styled";
+import { instructions } from "../../../../Global/Text";
+import { boxHeight } from "../styled";
 
 const Box = styled("div")(({ theme, ...props }) => ({
   display: "flex",

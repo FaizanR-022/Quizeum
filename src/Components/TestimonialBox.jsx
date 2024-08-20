@@ -14,14 +14,15 @@ import { autoPlay } from "react-swipeable-views-utils";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const Text = styled(Typography)(({ theme, ...props }) => ({
-  font: "200 20px Poppins",
+  font: "200 17px Poppins",
   color: theme.palette.primary.text,
   paddingBottom: "50px",
   textAlign: "left",
+  letterSpacing: "1.2px",
 }));
 
 const Name = styled(Typography)(({ theme, ...props }) => ({
-  font: "700 40px Raleway",
+  font: "700 26px Raleway",
   color: theme.palette.primary.orange,
   textAlign: "left",
 }));
@@ -33,7 +34,7 @@ const style = {
 
   "& button, button:disabled": {
     color: "white",
-    fontSize: "15px",
+    fontSize: "13px",
     padding: "0px",
   },
 
@@ -65,48 +66,25 @@ function TestimonialBox({ content }) {
 
   return (
     <Box sx={style}>
-      {/* <Paper
-        square
-        elevation={0}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          height: 350,
-          pl: 2,
-          bgcolor: "primary.text",
-        }}
-      >
-        <Typography>{content[activeStep].text}</Typography>
-      </Paper> */}
-      <AutoPlaySwipeableViews
-        axis="x"
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {content.map((step, index) => (
-          <div key={step.id}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              //   <Box
-              //     component="img"
-              //     sx={{
-              //       height: 255,
-              //       display: "block",
-              //       maxWidth: 400,
-              //       overflow: "hidden",
-              //       width: "100%",
-              //     }}
-              //     src={step.imgPath}
-              //     alt={step.label}
-              //   />
-              <>
-                <Text>{step.text}</Text>
-                <Name>- {step.name}</Name>{" "}
-              </>
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
+      <Box sx={{ height: "220px" }}>
+        <AutoPlaySwipeableViews
+          axis="x"
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+        >
+          {content.map((step, index) => (
+            <div key={step.id}>
+              {Math.abs(activeStep - index) <= 2 ? (
+                <>
+                  <Text>{step.text}</Text>
+                  <Name>- {step.name}</Name>{" "}
+                </>
+              ) : null}
+            </div>
+          ))}
+        </AutoPlaySwipeableViews>
+      </Box>
       <MobileStepper
         sx={{
           marginTop: "40px",

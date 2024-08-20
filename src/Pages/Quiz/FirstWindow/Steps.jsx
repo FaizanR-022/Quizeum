@@ -6,9 +6,9 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import { Wrapper, HeroBox } from "../../../Global/styled";
 import { BackgroundLayer, NextBtn, Overlay } from "../../../Global/styled";
-import ChooseProgram from "./ChooseProgram";
-import ChooseLevels from "./ChooseLevels";
-import Instructions from "./Instructions";
+import ChooseProgram from "./Screens/ChooseProgram";
+import ChooseLevels from "./Screens/ChooseLevels";
+import Instructions from "./Screens/Instructions";
 import SwipeableViews from "react-swipeable-views";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -48,14 +48,19 @@ export default function Steps() {
   };
 
   return (
-    // <BackgroundLayer>
-    //   <motion.div {...motionSlide}>
-    //     <Wrapper>
-    //       <Overlay>
-    //         <HeroBox>
     <BackgroundLayers motionType={motionSlide}>
       <Box sx={{ width: "100%" }}>
-        <Stepper activeStep={activeStep} alternativeLabel sx={{ pb: "15px" }}>
+        <Stepper
+          activeStep={activeStep}
+          alternativeLabel
+          sx={{
+            pb: "10px",
+            "& svg": {
+              width: "0.85em",
+              height: "0.85em",
+            },
+          }}
+        >
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
@@ -110,11 +115,6 @@ export default function Steps() {
           )}
         </Box>
       </Box>
-      {/* </HeroBox>
-          </Overlay>
-        </Wrapper>
-      </motion.div>
-    </BackgroundLayer> */}
     </BackgroundLayers>
   );
 }

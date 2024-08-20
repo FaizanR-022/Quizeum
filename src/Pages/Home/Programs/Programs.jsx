@@ -14,7 +14,8 @@ const Programs = () => {
         <Divider />
         <ProgramContainer
           sx={{
-            padding: "130px 0 0 0",
+            padding: "110px 0 0 0",
+            gap: "50px",
           }}
         >
           {programContent.map((program) => {

@@ -10,7 +10,7 @@ import BgImg from "../../../assets/featureBg.jpg";
 // }));
 
 const SectionWrapper = styled("div")(({ theme, ...props }) => ({
-  height: "700px",
+  height: "630px",
   backgroundColor: theme.palette.primary.bgBlue,
   // backgroundColor: "rgba(0, 21, 36, 0.7)",
   textAlign: "center",

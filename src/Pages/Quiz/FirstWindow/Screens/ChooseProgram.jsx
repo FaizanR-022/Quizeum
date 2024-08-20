@@ -1,12 +1,12 @@
-import { ModuleHeading, ProgramContainer } from "../../../Global/styled";
-import { subjects } from "../../../Global/Text";
+import { ModuleHeading, ProgramContainer } from "../../../../Global/styled";
+import { subjects } from "../../../../Global/Text";
 
-import ProgramsBox from "../../../Components/ProgramsBox";
-import Divider from "../../../Global/Divider";
+import ProgramsBox from "../../../../Components/ProgramsBox";
+import Divider from "../../../../Global/Divider";
 import { useState } from "react";
-import { activeStyle, boxHeight } from "./styled";
+import { activeStyle, boxHeight } from "../styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectProgram } from "./Store/Slice";
+import { selectProgram } from "../Store/Slice";
 
 export default function ChooseProgram() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export default function ChooseProgram() {
           return (
             <ProgramsBox
               {...onClick(subject.title, subject.text)}
-              homePage={false}
+              homepage={false}
             />
           );
         })}

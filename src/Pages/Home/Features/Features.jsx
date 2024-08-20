@@ -2,13 +2,25 @@ import { Container, SectionWrapper } from "./styled";
 import { MainHeading } from "../../../Global/styled";
 
 import UpdateIcon from "@mui/icons-material/Update";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import FeatureBox from "../../../Components/FeatureBox";
 import Divider from "../../../Global/Divider";
+import { featureText } from "../../../Global/Text";
 
-const Title = [
-  "Program-specific Quizzes",
-  "Up-to-Date Content",
-  "Performance Analytics",
+const boxes = [
+  {
+    title: "Program-specific Quizzes",
+    icon: AssignmentIcon,
+  },
+  {
+    title: "Up-to-Date Questions",
+    icon: UpdateIcon,
+  },
+  {
+    title: "Performance Analytics",
+    icon: QueryStatsIcon,
+  },
 ];
 
 const firstTitle = "Up-to-Date Content";
@@ -27,12 +39,16 @@ export default function Features() {
         <MainHeading sx={{ paddingBottom: "20px" }}>Features</MainHeading>
         <Divider />
         <Container>
-          <FeatureBox
-            Icon={UpdateIcon}
-            Title={firstTitle}
-            Text={firstText}
-            // sx={{ borderRight: "1px solid orange" }}
-          />
+          {boxes.map((box, idx) => (
+            <FeatureBox
+              Icon={box.icon}
+              Title={box.title}
+              Text={featureText[idx]}
+              sx={idx === 1 ? centerBoxStyle : null}
+            />
+          ))}
+
+          {/* <FeatureBox Icon={UpdateIcon} Title={firstTitle} Text={firstText} />
           <FeatureBox
             Icon={UpdateIcon}
             Title={firstTitle}
@@ -47,7 +63,7 @@ export default function Features() {
             Title={firstTitle}
             Text={firstText}
             // sx={{ borderLeft: "1px solid orange" }}
-          />
+          /> */}
         </Container>
       </SectionWrapper>
     </>

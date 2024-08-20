@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 
 const SectionWrapper = styled("div")(({ theme, ...props }) => ({
-  height: "800px",
+  height: "650px",
   backgroundColor: theme.palette.primary.bgBlue,
   textAlign: "center",
   padding: "110px 80px 150px 80px",
@@ -24,7 +24,7 @@ const ImageContainer = styled("div")(() => ({
 }));
 
 const Image = styled("img")(() => ({
-  height: "550px",
+  height: "480px",
 }));
 
 export { SectionWrapper, Container, Image, ImageContainer };

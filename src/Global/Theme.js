@@ -9,7 +9,7 @@ export const theme = createTheme({
       orange: "#ff7d00",
       darkOrange: "#78290f",
       lightBlue: "#15616d",
-      HeroBg: "rgba(0, 21, 36, 0.8)",
+      HeroBg: "rgba(0, 21, 36, 0.85)",
       black: "#000",
       green: "#005500",
       red: "#510101",

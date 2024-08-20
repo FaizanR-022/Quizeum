@@ -1,13 +1,13 @@
 import { styled } from "@mui/material";
 
 const activeStyle = {
-  border: (theme) => `3px solid ${theme.palette.primary.text}`,
+  border: (theme) => `2px solid ${theme.palette.primary.text}`,
 };
 
 // Box heights of steps
 const boxHeight = {
   maxHeight: "50vh",
-  pt: "60px",
+  pt: "40px",
 };
 
 export { activeStyle, boxHeight };

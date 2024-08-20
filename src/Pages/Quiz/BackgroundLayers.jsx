@@ -16,10 +16,8 @@ const BackgroundLayers = ({ motionType, children, ...props }) => {
           <Wrapper>
             <Overlay sx={props.Overlaysx}>
               <Header />
-              <HeroBox sx={props.HeroBoxsx}>
-                {/* <h2>Hllo</h2> */}
-                {children}
-              </HeroBox>
+              <HeroBox sx={props.HeroBoxsx}>{children}</HeroBox>
+              {/* <Footer /> */}
             </Overlay>
           </Wrapper>
         </motion.div>

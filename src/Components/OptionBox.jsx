@@ -3,14 +3,14 @@ import { Box, styled, Typography } from "@mui/material";
 // const Box
 const Btn = styled("button")(({ theme, ...props }) => ({
   border: `2px solid ${theme.palette.primary.main}`,
-  padding: "8px 15px",
+  padding: "7px 14px",
   backgroundColor: "rgba(0,0,0,0)",
   color: theme.palette.primary.main,
   fontWeight: "700",
   borderRadius: "75px",
   //   borderRadius: "50%",
   //   borderRadius: "8px",
-  fontSize: "15px",
+  fontSize: "14px",
   transition: "all 0.3s ease",
   cursor: "pointer",
 
@@ -26,7 +26,7 @@ const activeStyle = {
 };
 
 const Text = styled(Typography)(({ theme, ...props }) => ({
-  font: "400 25px Poppins",
+  font: "400 18px Poppins",
   letterSpacing: "1.2px",
   textAlign: "left",
 }));
@@ -38,7 +38,7 @@ const OptionBox = ({ theme, active = false, ...props }) => {
         display: "flex",
         alignItems: "center",
         gap: "40px",
-        pt: "36px",
+        pt: "30px",
       }}
     >
       <Btn onClick={props.onClick} sx={active ? activeStyle : null}>
