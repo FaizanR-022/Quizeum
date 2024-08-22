@@ -7,7 +7,7 @@ import Testimonials from "./Testimonials/Testimonials";
 import { AnimatePresence, easeIn, motion } from "framer-motion";
 import { BackgroundLayer } from "../../Global/styled";
 import { motionFade } from "../../Global/motionStyling";
-import CopyRightBar from "../Quiz/QuizWindow/Header-Footer/Footer";
+import CopyRightBar from "../Quiz/Header-Footer/Footer";
 
 export default function Home() {
   return (

@@ -16,10 +16,14 @@ export default function CountDown({
     const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev === 0) {
+          setMinute(0);
+          setSecond(0);
           clearInterval(interval);
           return 0;
         }
 
+        setMinute(Math.floor((prev - 1) / 60));
+        setSecond(Math.floor((prev - 1) % 60));
         return prev - 1;
       });
     }, 1000);
@@ -27,8 +31,8 @@ export default function CountDown({
     return () => clearInterval(interval);
   }, []);
 
-  setMinute(Math.floor(timer / 60));
-  setSecond(Math.floor(timer % 60));
+  // setMinute(Math.floor(timer / 60));
+  // setSecond(Math.floor(timer % 60));
 
   return (
     <Box

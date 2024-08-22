@@ -7,7 +7,7 @@ export const Question = styled(Typography)(({ theme, ...props }) => ({
 
 // For Result & Answer window
 export const Overlaysx = {
-  minHeight: "97vh",
-  height: "min-content",
-  pb: "4vh",
+  // minHeight: "97vh",
+  // height: "min-content",
+  // pb: "4vh",
 };

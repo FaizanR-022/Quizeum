@@ -18,7 +18,8 @@ const Overlay = styled("div")(({ theme, ...props }) => ({
   display: "flex",
   flexDirection: "column",
   // minHeight: "100vh",
-  height: "97vh",
+  minHeight: "97vh",
+  height: "min-content",
   justifyContent: "normal",
   alignItems: "center",
 }));

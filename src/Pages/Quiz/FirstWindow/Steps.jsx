@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionFade, motionSlide } from "../../../Global/motionStyling";
 import BackgroundLayers from "../BackgroundLayers";
+import { Overlaysx } from "../QuizWindow/styled";
 
 const steps = ["Programs", "Levels", "Instructions"];
 const pages = [<ChooseProgram />, <ChooseLevels />, <Instructions />];
@@ -48,7 +49,7 @@ export default function Steps() {
   };
 
   return (
-    <BackgroundLayers motionType={motionSlide}>
+    <BackgroundLayers motionType={motionSlide} Overlaysx={Overlaysx}>
       <Box sx={{ width: "100%" }}>
         <Stepper
           activeStep={activeStep}

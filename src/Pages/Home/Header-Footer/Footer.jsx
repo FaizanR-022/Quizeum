@@ -1,4 +1,5 @@
 import {
+  Box,
   ButtonGroup,
   Icon,
   IconButton,
@@ -13,6 +14,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CallIcon from "@mui/icons-material/Call";
+import { useNavigate } from "react-router-dom";
+import EmailIcon from "@mui/icons-material/Email";
 
 const href = "https://www.linkedin.com/in/faizan-raza-302360245/";
 
@@ -29,11 +32,21 @@ const Div = styled("div")(({ theme, ...props }) => ({
   width: "30%",
   display: "flex",
   flexDirection: "column",
+  gap: "20px",
 
   "& li": {
     color: theme.palette.primary.text,
     font: "400 14px Poppins",
     paddingLeft: "5px",
+  },
+
+  "& ul": {
+    paddingTop: "0",
+  },
+
+  "& svg": {
+    height: "0.8em",
+    width: "0.8em",
   },
 }));
 
@@ -67,9 +80,21 @@ const Heading = styled(Typography)(({ theme, ...props }) => ({
 
 const link = styled("div")(({ theme, ...props }) => ({}));
 
+const contact = [
+  {
+    icon: CallIcon,
+    text: "+92 300 1234567",
+  },
+  {
+    icon: EmailIcon,
+    text: "faizanraza405@yahoo.com",
+  },
+];
+
 // const Copyright;
 
 export default function Footer() {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <Div
@@ -114,30 +139,31 @@ export default function Footer() {
           <Link underline="none" href="/">
             <ListItem>Home</ListItem>
           </Link>
-          <Link underline="none" href="/">
-            <ListItem>Programs</ListItem>
-          </Link>
-          <Link underline="none" href="/">
-            <ListItem>Your Record</ListItem>
-          </Link>
-          <Link underline="none" href="/">
-            <ListItem>Success Stories</ListItem>
-          </Link>
+          <ListItem
+            onClick={() => navigate("/details")}
+            sx={{ cursor: "pointer" }}
+          >
+            Programs
+          </ListItem>
+          {/* </Link> */}
         </List>
       </Div>
       <Div>
         <Heading>Contact Info</Heading>
-        <span>
-          {" "}
-          <CallIcon
-            sx={{
-              color: "primary.text",
-              backgroundColor: "primary.main",
-              padding: "7px",
-              borderRadius: "5px",
-            }}
-          />
-        </span>
+        {contact.map((content) => (
+          <Box sx={{ display: "flex", alignItems: "center", gap: "15px" }}>
+            {" "}
+            <content.icon
+              sx={{
+                color: "primary.text",
+                backgroundColor: "primary.main",
+                padding: "7px",
+                borderRadius: "5px",
+              }}
+            />
+            <Typography>{content.text}</Typography>
+          </Box>
+        ))}
       </Div>
     </Wrapper>
   );

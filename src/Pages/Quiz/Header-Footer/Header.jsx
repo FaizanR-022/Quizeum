@@ -1,5 +1,5 @@
 import { Box, styled, useTheme } from "@mui/material";
-import Logo from "../../../../assets/Logo.png";
+import Logo from "../../../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
 
 const LogoBox = styled("img")(({ theme, ...props }) => ({

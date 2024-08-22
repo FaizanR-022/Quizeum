@@ -8,7 +8,7 @@ import QuizLoader from "../Global/Loader/QuizLoader";
 import Results from "../Pages/Quiz/QuizWindow/Result/Results";
 import Answers from "../Pages/Quiz/QuizWindow/Answers/Answers";
 import Header from "../Pages/Home/Header-Footer/Header";
-import QuizHeader from "../Pages/Quiz/QuizWindow/Header-Footer/Header";
+import QuizHeader from "../Pages/Quiz/Header-Footer/Header";
 
 export const Route = createBrowserRouter([
   {

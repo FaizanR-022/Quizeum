@@ -4,7 +4,7 @@ import { capitalizeFirstLetter, handleApiCall } from "./helper";
 
 import { HeroBox, ModuleHeading, NextBtn } from "../../../../Global/styled";
 import Divider from "../../../../Global/Divider";
-import { Question } from "../styled";
+import { Overlaysx, Question } from "../styled";
 import { Box } from "@mui/material";
 import OptionBox from "../../../../Components/OptionBox";
 import QuizInfoBox from "../../../../Components/QuizInfoBox";
@@ -100,7 +100,7 @@ export default function Quiz() {
   }
 
   return (
-    <BackgroundLayers motionType={motionFade}>
+    <BackgroundLayers motionType={motionFade} Overlaysx={Overlaysx}>
       <ModuleHeading sx={{ fontSize: "65px" }}> {count + 1}/5</ModuleHeading>
       <QuizInfoBox
         content={[...content, capitalizeFirstLetter(data[subject]?.name)]}
