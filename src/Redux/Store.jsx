@@ -8,9 +8,9 @@ export const Store = configureStore({
     info: infoReducer,
     questions: QuesReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      immutableCheck: false,
-      serializableCheck: false,
-    }).concat(logger),
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware({
+  //     immutableCheck: false,
+  //     serializableCheck: false,
+  //   }).concat(logger),
 });
