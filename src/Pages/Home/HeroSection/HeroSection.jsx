@@ -12,7 +12,7 @@ import {
 import { MainHeading, Overlay } from "../../../Global/styled";
 
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
-import HeroImg from "../../../assets/heroimg3.png";
+import HeroImg from "../../../assets/heroimg3opt.png";
 import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
